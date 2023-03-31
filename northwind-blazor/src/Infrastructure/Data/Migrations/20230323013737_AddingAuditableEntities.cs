@@ -8,7 +8,7 @@ namespace northwind_blazor.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<DateTime>(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Products",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
@@ -19,7 +19,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Products",
                 nullable: true);
 
@@ -29,7 +29,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Orders",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
@@ -40,7 +40,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Orders",
                 nullable: true);
 
@@ -50,7 +50,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Order Details",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
@@ -61,7 +61,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Order Details",
                 nullable: true);
 
@@ -71,7 +71,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Employees",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
@@ -82,7 +82,7 @@ namespace northwind_blazor.Persistence.Migrations
                 nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Employees",
                 nullable: true);
 
@@ -95,7 +95,7 @@ namespace northwind_blazor.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Products");
 
             migrationBuilder.DropColumn(
@@ -103,7 +103,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Products");
 
             migrationBuilder.DropColumn(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Products");
 
             migrationBuilder.DropColumn(
@@ -111,7 +111,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Products");
 
             migrationBuilder.DropColumn(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Orders");
 
             migrationBuilder.DropColumn(
@@ -119,7 +119,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Orders");
 
             migrationBuilder.DropColumn(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Orders");
 
             migrationBuilder.DropColumn(
@@ -127,7 +127,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Orders");
 
             migrationBuilder.DropColumn(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Order Details");
 
             migrationBuilder.DropColumn(
@@ -135,7 +135,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Order Details");
 
             migrationBuilder.DropColumn(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Order Details");
 
             migrationBuilder.DropColumn(
@@ -143,7 +143,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Order Details");
 
             migrationBuilder.DropColumn(
-                name: "Created",
+                name: "CreatedUtc",
                 table: "Employees");
 
             migrationBuilder.DropColumn(
@@ -151,7 +151,7 @@ namespace northwind_blazor.Persistence.Migrations
                 table: "Employees");
 
             migrationBuilder.DropColumn(
-                name: "LastModified",
+                name: "LastModifiedUtc",
                 table: "Employees");
 
             migrationBuilder.DropColumn(

@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Common\Interfaces\INotificationService.cs" />
-    <Compile Remove="Common\Interfaces\IUserManager.cs" />
+    <Compile Remove="Common\Interfaces\ICurrentUserService.cs" />
   </ItemGroup>
 
   <ItemGroup>

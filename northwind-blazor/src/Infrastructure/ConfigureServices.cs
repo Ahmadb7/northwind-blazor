@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using northwind_blazor.Application.Common.Interfaces;
 using northwind_blazor.Application.Common.Services.Data;
 using northwind_blazor.Application.Common.Services.Identity;
+using northwind_blazor.Infrastructure;
 using northwind_blazor.Infrastructure.Data;
 using northwind_blazor.Infrastructure.Data.Interceptors;
+using northwind_blazor.Infrastructure.Files;
 using northwind_blazor.Infrastructure.Identity;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -14,6 +17,10 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            services.AddTransient<INotificationService, NotificationService>();
+            services.AddTransient<IDateTime, MachineDateTime>();
+            services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
 
             services.AddDbContext<NorthwindDbContext>(options =>
                 options.UseSqlServer(connectionString));

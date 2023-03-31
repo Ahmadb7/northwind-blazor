@@ -1,7 +1,9 @@
 using Azure.Identity;
+using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using northwind_blazor.Application.Common.Services.Identity;
+using northwind_blazor.Application.System.Commands.SeedSampleData;
 using northwind_blazor.Infrastructure.Data;
 using northwind_blazor.WebUI.Server.Services;
 using northwind_blazor.WebUI.Shared.Authorization;
@@ -61,11 +63,15 @@ var app = builder.Build();
 // Initialise and seed the database
 using (var scope = app.Services.CreateScope())
 {
+    var services = scope.ServiceProvider;
     try
     {
-        var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
+        var initialiser = services.GetRequiredService<ApplicationDbContextInitialiser>();
         await initialiser.InitialiseAsync();
         await initialiser.SeedAsync();
+
+        var mediator = services.GetRequiredService<IMediator>();
+        await mediator.Send(new SeedSampleDataCommand(), CancellationToken.None);
     }
     catch (Exception ex)
     {

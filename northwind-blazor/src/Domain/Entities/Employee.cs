@@ -1,6 +1,4 @@
 ﻿using northwind_blazor.Domain.Common;
-using System;
-using System.Collections.Generic;
 
 namespace northwind_blazor.Domain.Entities
 {
