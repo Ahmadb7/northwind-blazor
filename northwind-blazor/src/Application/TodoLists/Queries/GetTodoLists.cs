@@ -8,11 +8,11 @@ namespace northwind_blazor.Application.TodoLists.Queries
     public class GetTodoListsQueryHandler
         : IRequestHandler<GetTodoListsQuery, TodosVm>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
         private readonly IMapper _mapper;
 
         public GetTodoListsQueryHandler(
-            IApplicationDbContext context,
+            INorthwindDbContext context,
             IMapper mapper)
         {
             _context = context;

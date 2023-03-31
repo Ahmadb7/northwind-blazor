@@ -14,7 +14,7 @@ namespace northwind_blazor.Application.UnitTests.Common.Mappings
         public MappingTests()
         {
             _configuration = new MapperConfiguration(config =>
-                config.AddMaps(typesFromAssembliesContainingMappingDefinitions: typeof(IApplicationDbContext)));
+                config.AddMaps(typesFromAssembliesContainingMappingDefinitions: typeof(INorthwindDbContext)));
 
             _mapper = _configuration.CreateMapper();
         }

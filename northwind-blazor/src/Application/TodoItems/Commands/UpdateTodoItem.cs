@@ -9,9 +9,9 @@ namespace northwind_blazor.Application.TodoItems.Commands
     public class UpdateTodoItemCommandHandler
             : AsyncRequestHandler<UpdateTodoItemCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public UpdateTodoItemCommandHandler(IApplicationDbContext context)
+        public UpdateTodoItemCommandHandler(INorthwindDbContext context)
         {
             _context = context;
         }

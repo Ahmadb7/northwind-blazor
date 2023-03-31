@@ -1,4 +1,4 @@
-﻿using static Testing;
+﻿using static northwind_blazor.Application.SubcutaneousTests.Testing;
 
 namespace northwind_blazor.Application.SubcutaneousTests
 {

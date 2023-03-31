@@ -16,9 +16,9 @@ namespace northwind_blazor.Application.TodoItems.Commands
     public class CreateTodoItemCommandHandler
             : IRequestHandler<CreateTodoItemCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public CreateTodoItemCommandHandler(IApplicationDbContext context)
+        public CreateTodoItemCommandHandler(INorthwindDbContext context)
         {
             _context = context;
         }

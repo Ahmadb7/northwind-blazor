@@ -6,9 +6,9 @@ namespace northwind_blazor.Application.TodoLists.Commands
 
     public class UpdateTodoListCommandValidator : AbstractValidator<UpdateTodoListCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public UpdateTodoListCommandValidator(IApplicationDbContext context)
+        public UpdateTodoListCommandValidator(INorthwindDbContext context)
         {
             _context = context;
 
@@ -32,9 +32,9 @@ namespace northwind_blazor.Application.TodoLists.Commands
     public class UpdateTodoListCommandHandler
     : AsyncRequestHandler<UpdateTodoListCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public UpdateTodoListCommandHandler(IApplicationDbContext context)
+        public UpdateTodoListCommandHandler(INorthwindDbContext context)
         {
             _context = context;
         }

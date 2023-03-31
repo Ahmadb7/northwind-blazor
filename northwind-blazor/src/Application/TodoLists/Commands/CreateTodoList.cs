@@ -6,9 +6,9 @@ namespace northwind_blazor.Application.TodoLists.Commands
 
     public class CreateTodoListCommandValidator : AbstractValidator<CreateTodoListCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public CreateTodoListCommandValidator(IApplicationDbContext context)
+        public CreateTodoListCommandValidator(INorthwindDbContext context)
         {
             _context = context;
 
@@ -31,9 +31,9 @@ namespace northwind_blazor.Application.TodoLists.Commands
     public class CreateTodoListCommandHandler
         : IRequestHandler<CreateTodoListCommand, int>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public CreateTodoListCommandHandler(IApplicationDbContext context)
+        public CreateTodoListCommandHandler(INorthwindDbContext context)
         {
             _context = context;
         }

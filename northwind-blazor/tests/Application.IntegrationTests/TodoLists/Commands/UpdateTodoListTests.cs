@@ -3,7 +3,7 @@ using northwind_blazor.Application.Common.Exceptions;
 using northwind_blazor.Application.TodoLists.Commands;
 using northwind_blazor.Domain.Entities;
 using northwind_blazor.WebUI.Shared.TodoLists;
-using static Testing;
+using static northwind_blazor.Application.SubcutaneousTests.Testing;
 
 namespace northwind_blazor.Application.SubcutaneousTests.TodoLists.Commands
 {
@@ -20,7 +20,7 @@ namespace northwind_blazor.Application.SubcutaneousTests.TodoLists.Commands
                 });
 
             await FluentActions.Invoking(() =>
-                SendAsync(command)).Should().ThrowAsync<NotFoundException>();
+                SendAsync(command)).Should().ThrowAsync<Common.Exceptions.NotFoundException>();
         }
 
         [Test]

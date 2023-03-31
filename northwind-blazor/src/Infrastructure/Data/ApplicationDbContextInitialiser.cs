@@ -8,7 +8,7 @@ namespace northwind_blazor.Infrastructure.Data
 {
     public class ApplicationDbContextInitialiser
     {
-        private readonly ApplicationDbContext _context;
+        private readonly NorthwindDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<ApplicationRole> _roleManager;
 
@@ -19,7 +19,7 @@ namespace northwind_blazor.Infrastructure.Data
         private const string DefaultPassword = "Password123!";
 
         public ApplicationDbContextInitialiser(
-            ApplicationDbContext context,
+            NorthwindDbContext context,
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager)
         {

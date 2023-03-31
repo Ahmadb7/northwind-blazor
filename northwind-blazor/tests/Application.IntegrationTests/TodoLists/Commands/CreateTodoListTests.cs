@@ -2,7 +2,7 @@
 using northwind_blazor.Application.TodoLists.Commands;
 using northwind_blazor.Domain.Entities;
 using northwind_blazor.WebUI.Shared.TodoLists;
-using static Testing;
+using static northwind_blazor.Application.SubcutaneousTests.Testing;
 
 namespace northwind_blazor.Application.SubcutaneousTests.TodoLists.Commands
 {

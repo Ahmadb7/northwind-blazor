@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using northwind_blazor.Application.Common.Services.Identity;
 using northwind_blazor.Infrastructure.Data;
-using static Testing;
+using static northwind_blazor.Application.SubcutaneousTests.Testing;
 
 namespace northwind_blazor.Application.SubcutaneousTests
 {
@@ -31,10 +31,10 @@ namespace northwind_blazor.Application.SubcutaneousTests
                         s.UserId == GetCurrentUserId()));
 
                 services
-                    .Remove<DbContextOptions<ApplicationDbContext>>()
-                    .AddDbContext<ApplicationDbContext>((sp, options) =>
+                    .Remove<DbContextOptions<NorthwindDbContext>>()
+                    .AddDbContext<NorthwindDbContext>((sp, options) =>
                         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
-                            builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+                            builder => builder.MigrationsAssembly(typeof(NorthwindDbContext).Assembly.FullName)));
             });
         }
     }

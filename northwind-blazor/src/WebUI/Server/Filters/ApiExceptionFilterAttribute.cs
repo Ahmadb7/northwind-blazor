@@ -15,7 +15,7 @@ namespace northwind_blazor.WebUI.Server.Filters
             _exceptionHandlers = new Dictionary<Type, Action<ExceptionContext>>
             {
                 { typeof(ValidationException), HandleValidationException },
-                { typeof(NotFoundException), HandleNotFoundException }
+                { typeof(Application.Common.Exceptions.NotFoundException), HandleNotFoundException }
             };
         }
 
@@ -58,7 +58,7 @@ namespace northwind_blazor.WebUI.Server.Filters
 
         private void HandleNotFoundException(ExceptionContext context)
         {
-            var exception = (NotFoundException)context.Exception;
+            var exception = (Application.Common.Exceptions.NotFoundException)context.Exception;
 
             var details = new ProblemDetails()
             {

@@ -5,9 +5,9 @@
     public class DeleteTodoListCommandHandler
         : AsyncRequestHandler<DeleteTodoListCommand>
     {
-        private readonly IApplicationDbContext _context;
+        private readonly INorthwindDbContext _context;
 
-        public DeleteTodoListCommandHandler(IApplicationDbContext context)
+        public DeleteTodoListCommandHandler(INorthwindDbContext context)
         {
             _context = context;
         }

@@ -82,5 +82,10 @@ namespace northwind_blazor.Domain.ValueObjects
         {
             yield return Code;
         }
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Code;
+        }
     }
 }

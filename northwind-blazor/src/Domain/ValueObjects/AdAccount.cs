@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Northwind.Domain.Exceptions;
-using Northwind.Domain.Common;
+using northwind_blazor.Domain.Exceptions;
+using northwind_blazor.Domain.Common;
 
-namespace Northwind.Domain.ValueObjects
+namespace northwind_blazor.Domain.ValueObjects
 {
     public class AdAccount : ValueObject
     {
@@ -49,6 +49,12 @@ namespace Northwind.Domain.ValueObjects
         }
 
         protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Domain;
+            yield return Name;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
         {
             yield return Domain;
             yield return Name;

@@ -103,7 +103,7 @@ namespace northwind_blazor.Application.SubcutaneousTests
         {
             using var scope = _scopeFactory.CreateScope();
 
-            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var context = scope.ServiceProvider.GetRequiredService<NorthwindDbContext>();
 
             return await context.FindAsync<TEntity>(keyValues);
         }
@@ -113,7 +113,7 @@ namespace northwind_blazor.Application.SubcutaneousTests
         {
             using var scope = _scopeFactory.CreateScope();
 
-            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var context = scope.ServiceProvider.GetRequiredService<NorthwindDbContext>();
 
             context.Add(entity);
 
@@ -124,7 +124,7 @@ namespace northwind_blazor.Application.SubcutaneousTests
         {
             using var scope = _scopeFactory.CreateScope();
 
-            var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            var context = scope.ServiceProvider.GetRequiredService<NorthwindDbContext>();
 
             return await context.Set<TEntity>().CountAsync();
         }

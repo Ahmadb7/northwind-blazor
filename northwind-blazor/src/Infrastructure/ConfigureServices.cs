@@ -15,23 +15,23 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             var connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<NorthwindDbContext>(options =>
                 options.UseSqlServer(connectionString));
 
             services.AddScoped<ApplicationDbContextInitialiser>();
 
-            services.AddScoped<IApplicationDbContext>(sp =>
-                sp.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<INorthwindDbContext>(sp =>
+                sp.GetRequiredService<NorthwindDbContext>());
 
             services.AddScoped<AuditableEntitySaveChangesInterceptor>();
 
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddRoles<ApplicationRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<NorthwindDbContext>()
                 .AddClaimsPrincipalFactory<ApplicationUserClaimsPrincipalFactory>();
 
             services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>(options =>
+                .AddApiAuthorization<ApplicationUser, NorthwindDbContext>(options =>
                 {
                     options.IdentityResources["openid"].UserClaims.Add("role");
                     options.ApiResources.Single().UserClaims.Add("role");
