@@ -1,5 +1,6 @@
 ﻿@page "/customerlist"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using northwind_blazor.Application.Customers.Queries.GetCustomersList;
 @attribute [Authorize]
 @inject HttpClient Http
 
@@ -15,7 +16,41 @@
 }
 else
 {
-    <table class="table">
+    <DxGrid Data="@Model.Customers"
+        ShowFilterRow="true"
+        EditMode="GridEditMode.EditForm"
+        EditModelSaving="OnEditModelSaving"
+        DataItemDeleting="OnDataItemDeleting">
+        <Columns>
+            <DxGridCommandColumn Width="120px" />
+            <DxGridDataColumn FieldName="Id"
+                          Caption="Id"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="1" />
+            <DxGridDataColumn FieldName="Name"
+                          Caption="Name"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="0" />
+        </Columns>
+        <TotalSummary>
+            <DxGridSummaryItem FooterColumnName="Name"
+                           SummaryType=GridSummaryItemType.Count />
+        </TotalSummary>
+        <EditFormTemplate Context="editFormContext">
+            @{
+                var customer = (CustomerLookupDto)editFormContext.EditModel;
+            }
+            <DxFormLayout>
+                @*<DxFormLayoutItem Caption="Id">
+                    <DxTextBox @bind-Text="@customer.Id" />
+                </DxFormLayoutItem>*@
+                <DxFormLayoutItem Caption="Name">
+                    <DxTextBox @bind-Text="@customer.Name" />
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        </EditFormTemplate>
+    </DxGrid>
+    @*<table class="table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -29,7 +64,7 @@ else
                 </tr>
             }
         </tbody>
-    </table>
+    </table>*@
 }
 
 

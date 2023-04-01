@@ -1,3 +1,4 @@
+using DevExpress.Blazor;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -16,6 +17,8 @@ builder.Services.AddHttpClient("northwind_blazor.WebUI.ServerAPI", client => cli
 
 // Supply HttpClient instances that include access tokens when making requests to the server project
 builder.Services.AddScoped(sp => sp.GetRequiredService<IHttpClientFactory>().CreateClient("northwind_blazor.WebUI.ServerAPI"));
+
+builder.Services.AddDevExpressBlazor(configure => configure.BootstrapVersion = BootstrapVersion.v5);
 
 builder.Services
     .AddApiAuthorization()
