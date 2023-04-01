@@ -1,6 +1,5 @@
 ﻿@page "/customerlist"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
-@using northwind_blazor.Application.Customers.Queries.GetCustomersList;
 @attribute [Authorize]
 @inject HttpClient Http
 
@@ -38,7 +37,7 @@ else
         </TotalSummary>
         <EditFormTemplate Context="editFormContext">
             @{
-                var customer = (CustomerLookupDto)editFormContext.EditModel;
+                var customer = (northwind_blazor.Application.Customers.Queries.GetCustomersList.CustomerLookupDto)editFormContext.EditModel;
             }
             <DxFormLayout>
                 @*<DxFormLayoutItem Caption="Id">
@@ -50,21 +49,6 @@ else
             </DxFormLayout>
         </EditFormTemplate>
     </DxGrid>
-    @*<table class="table">
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var customer in Model.Customers)
-            {
-                <tr>
-                    <td>@customer.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>*@
 }
 
 
