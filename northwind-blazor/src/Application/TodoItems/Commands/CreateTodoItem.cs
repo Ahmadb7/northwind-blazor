@@ -39,7 +39,7 @@ namespace northwind_blazor.Application.TodoItems.Commands
 
             await _context.SaveChangesAsync(cancellationToken);
 
-            return entity.Id;
+            return entity.ToDoItemId;
         }
     }
 }

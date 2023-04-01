@@ -16,7 +16,7 @@
             CancellationToken cancellationToken)
         {
             var entity = await _context.TodoLists
-                .Where(l => l.Id == request.Id)
+                .Where(l => l.ToDoListId == request.Id)
                 .SingleOrDefaultAsync(cancellationToken);
 
             Guard.Against.NotFound(request.Id, entity);

@@ -4,6 +4,6 @@ namespace northwind_blazor.Application.Customers.Queries.GetCustomersList
 {
     public class CustomersListVm
     {
-        public IList<CustomerLookupDto> Customers { get; set; }
+        public List<CustomerLookupDto> Customers { get; set; }
     }
 }

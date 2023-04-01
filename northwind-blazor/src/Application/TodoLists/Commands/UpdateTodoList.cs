@@ -24,7 +24,7 @@ namespace northwind_blazor.Application.TodoLists.Commands
         public async Task<bool> BeUniqueTitle(UpdateTodoListCommand model, string title, CancellationToken cancellationToken)
         {
             return await _context.TodoLists
-                .Where(l => l.Id != model.List.Id)
+                .Where(l => l.ToDoListId != model.List.Id)
                 .AllAsync(l => l.Title != title, cancellationToken);
         }
     }

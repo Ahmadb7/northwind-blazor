@@ -16,7 +16,7 @@ namespace northwind_blazor.Infrastructure.Data
         private const string AccountsRole = "Accounts";
         private const string OperationsRole = "Operations";
 
-        private const string DefaultPassword = "Password123!";
+        private const string DefaultPassword = "P@ssw0rd";
 
         public ApplicationDbContextInitialiser(
             NorthwindDbContext context,

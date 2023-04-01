@@ -5,6 +5,8 @@ namespace northwind_blazor.Domain.Entities
 {
     public class TodoItem : BaseAuditableEntity
     {
+        public int ToDoItemId { get; set; }
+
         public int ListId { get; set; }
 
         public string Title { get; set; } = string.Empty;

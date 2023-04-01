@@ -20,7 +20,7 @@ namespace northwind_blazor.Application.TodoItems.Commands
                 CancellationToken cancellationToken)
         {
             var entity = await _context.TodoItems.FirstOrDefaultAsync(
-                i => i.Id == request.Item.Id, cancellationToken);
+                i => i.ToDoItemId == request.Item.Id, cancellationToken);
 
             Guard.Against.NotFound(request.Item.Id, entity);
 
