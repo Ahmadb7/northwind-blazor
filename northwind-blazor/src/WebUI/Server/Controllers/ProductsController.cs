@@ -59,7 +59,7 @@ namespace northwind_blazor.WebUI.Controllers
             return NoContent();
         }
 
-        [HttpGet]
+        [HttpGet("download")]
         [AllowAnonymous]
         public async Task<FileResult> Download()
         {

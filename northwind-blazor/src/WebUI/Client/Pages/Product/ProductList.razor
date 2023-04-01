@@ -1,0 +1,67 @@
+﻿@page "/productlist"
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inject HttpClient Http
+
+<PageTitle>Products</PageTitle>
+
+<h1>Products</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (Model == null || Model.Products == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <DxGrid Data="@Model.Products"
+        ShowFilterRow="true"
+        EditMode="GridEditMode.EditForm"
+        EditModelSaving="OnEditModelSaving"
+        DataItemDeleting="OnDataItemDeleting">
+        <Columns>
+            <DxGridCommandColumn Width="120px" />
+            <DxGridDataColumn FieldName="ProductName"
+                          Caption="Name"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="0" />
+            <DxGridDataColumn FieldName="CategoryName"
+                          Caption="Category"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="1" />
+            <DxGridDataColumn FieldName="SupplierCompanyName"
+                          Caption="Supplier Company" />
+            <DxGridDataColumn FieldName="UnitPrice"
+                          Caption="UnitPrice"
+                          DisplayFormat="C"/>
+            <DxGridDataColumn FieldName="Discontinued"
+                          Caption="Discontinued" />
+        </Columns>
+        <TotalSummary>
+            <DxGridSummaryItem FooterColumnName="Name"
+                           SummaryType=GridSummaryItemType.Count />
+        </TotalSummary>
+        <EditFormTemplate Context="editFormContext">
+            @{
+                var product = (northwind_blazor.Application.Products.Queries.GetProductsList.ProductDto)editFormContext.EditModel;
+            }
+            <DxFormLayout>
+                <DxFormLayoutItem Caption="Name">
+                    <DxTextBox @bind-Text="@product.ProductName" />
+                </DxFormLayoutItem>
+                @*<DxFormLayoutItem Caption="Category">
+                    <DxTextBox @bind-Text="@product.CategoryName" />
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="Supplier">
+                    <DxTextBox @bind-Text="@product.SupplierCompanyName" />
+                </DxFormLayoutItem>*@
+                <DxFormLayoutItem Caption="Unit Price">
+                    <DxSpinEdit @bind-Value="@product.UnitPrice" DisplayFormat="C" />
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        </EditFormTemplate>
+    </DxGrid>
+}
+
+
