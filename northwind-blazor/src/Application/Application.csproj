@@ -27,9 +27,4 @@
     <ProjectReference Include="..\WebUI\Shared\Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ProductLists\Commands\" />
-    <Folder Include="ProductLists\Queries\" />
-  </ItemGroup>
-
 </Project>

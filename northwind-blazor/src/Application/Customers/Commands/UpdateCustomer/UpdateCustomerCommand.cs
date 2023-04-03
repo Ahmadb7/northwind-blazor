@@ -12,7 +12,7 @@
         public string Fax { get; set; }
         public string Phone { get; set; }
         public string PostalCode { get; set; }
-        public string Region { get; set; }
+        public string? Region { get; set; }
 
         public class Handler : IRequestHandler<UpdateCustomerCommand>
         {

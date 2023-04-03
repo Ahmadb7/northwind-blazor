@@ -16,7 +16,7 @@ namespace northwind_blazor.Application.Customers.Queries.GetCustomerDetail
         public string Fax { get; set; }
         public string Phone { get; set; }
         public string PostalCode { get; set; }
-        public string Region { get; set; }
+        public string? Region { get; set; }
 
         public void Mapping(Profile profile)
         {

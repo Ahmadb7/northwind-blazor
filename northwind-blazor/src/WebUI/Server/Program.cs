@@ -9,6 +9,9 @@ using northwind_blazor.WebUI.Server.Services;
 using northwind_blazor.WebUI.Shared.Authorization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Serilog;
+using Serilog.Sinks.SystemConsole.Themes;
+using Serilog.Sinks.Splunk;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +25,15 @@ if (!string.IsNullOrWhiteSpace(keyVaultName))
         new Uri($"https://{keyVaultName}.vault.azure.net"),
         new DefaultAzureCredential());
 }
+
+// configure logger
+Log.Logger = new LoggerConfiguration()
+    //.WriteTo.Console(theme: AnsiConsoleTheme.Code)
+    //.WriteTo.EventCollector("https://mysplunk:8888/services/collector", "myeventcollectortoken")
+    .ReadFrom.Configuration(builder.Configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 
 builder.Services
     .AddApplicationServices()
@@ -100,15 +112,16 @@ app.UseHttpsRedirection();
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
+app.UseOpenApi();
 app.UseSwaggerUi3(configure =>
 {
-    configure.DocumentPath = "/api/v1/openapi.json";
+    //configure.DocumentPath = "/api/v1/openapi.json";
 });
 
 app.UseReDoc(configure =>
 {
-    configure.Path = "/redoc";
-    configure.DocumentPath = "/api/v1/openapi.json";
+    //configure.Path = "/redoc";
+    //configure.DocumentPath = "/api/v1/openapi.json";
 });
 
 app.UseRouting();
