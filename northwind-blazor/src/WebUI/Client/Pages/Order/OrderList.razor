@@ -1,0 +1,54 @@
+﻿@page "/customerlist"
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@attribute [Authorize]
+@inject HttpClient Http
+
+<PageTitle>Customers</PageTitle>
+
+<h1>Customers</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if (Model == null || Model.Customers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <DxGrid Data="@Model.Customers"
+        ShowFilterRow="true"
+        EditMode="GridEditMode.EditForm"
+        EditModelSaving="OnEditModelSaving"
+        DataItemDeleting="OnDataItemDeleting">
+        <Columns>
+            <DxGridCommandColumn Width="120px" />
+            <DxGridDataColumn FieldName="Id"
+                          Caption="Id"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="1" />
+            <DxGridDataColumn FieldName="Name"
+                          Caption="Name"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="0" />
+        </Columns>
+        <TotalSummary>
+            <DxGridSummaryItem FooterColumnName="Name"
+                           SummaryType=GridSummaryItemType.Count />
+        </TotalSummary>
+        <EditFormTemplate Context="editFormContext">
+            @{
+                var customer = (northwind_blazor.Application.Customers.Queries.GetCustomersList.CustomerLookupDto)editFormContext.EditModel;
+            }
+            <DxFormLayout>
+                @*<DxFormLayoutItem Caption="Id">
+                    <DxTextBox @bind-Text="@customer.Id" />
+                </DxFormLayoutItem>*@
+                <DxFormLayoutItem Caption="Name">
+                    <DxTextBox @bind-Text="@customer.Name" />
+                </DxFormLayoutItem>
+            </DxFormLayout>
+        </EditFormTemplate>
+    </DxGrid>
+}
+
+
