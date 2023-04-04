@@ -19,7 +19,9 @@ namespace northwind_blazor.Application.Products.Commands.CreateProduct
         {
             var entity = new Product
             {
-                ProductName = request.ProductName,
+                ProductCode = request.ProductCode,
+                ProductNameEn = request.ProductNameEn,
+                ProductNameFa = request.ProductNameFa,
                 CategoryId = request.CategoryId,
                 SupplierId = request.SupplierId,
                 UnitPrice = request.UnitPrice,

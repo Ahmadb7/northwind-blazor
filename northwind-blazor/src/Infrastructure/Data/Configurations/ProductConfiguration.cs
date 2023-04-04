@@ -12,9 +12,17 @@ namespace northwind_blazor.Persistence.Configurations
 
             builder.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
-            builder.Property(e => e.ProductName)
+            builder.Property(e => e.ProductCode)
+                .IsRequired()
+                .HasMaxLength(20);
+
+            builder.Property(e => e.ProductNameEn)
                 .IsRequired()
                 .HasMaxLength(40);
+
+            builder.Property(e => e.ProductNameFa)
+                .IsRequired()
+                .HasMaxLength(60);
 
             builder.Property(e => e.QuantityPerUnit).HasMaxLength(20);
 
@@ -29,6 +37,8 @@ namespace northwind_blazor.Persistence.Configurations
             builder.Property(e => e.UnitsInStock).HasDefaultValueSql("((0))");
 
             builder.Property(e => e.UnitsOnOrder).HasDefaultValueSql("((0))");
+
+            builder.HasIndex(p => p.ProductCode).IsUnique();
         }
     }
 }

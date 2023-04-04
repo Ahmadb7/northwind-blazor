@@ -19,7 +19,9 @@
             }
 
             entity.ProductId = request.ProductId;
-            entity.ProductName = request.ProductName;
+            entity.ProductCode = request.ProductCode;
+            entity.ProductNameEn = request.ProductNameEn;
+            entity.ProductNameFa = request.ProductNameFa;
             entity.CategoryId = request.CategoryId;
             entity.SupplierId = request.SupplierId;
             entity.UnitPrice = request.UnitPrice;

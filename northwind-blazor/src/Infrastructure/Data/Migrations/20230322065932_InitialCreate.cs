@@ -198,7 +198,9 @@ namespace northwind_blazor.Persistence.Migrations
                 {
                     ProductID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ProductName = table.Column<string>(maxLength: 40, nullable: false),
+                    ProductCode = table.Column<string>(maxLength: 20, nullable: false),
+                    ProductNameEn = table.Column<string>(maxLength: 40, nullable: false),
+                    ProductNameFa = table.Column<string>(maxLength: 60, nullable: false),
                     SupplierID = table.Column<int>(nullable: true),
                     CategoryID = table.Column<int>(nullable: true),
                     QuantityPerUnit = table.Column<string>(maxLength: 20, nullable: true),

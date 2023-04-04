@@ -22,10 +22,18 @@ else
         DataItemDeleting="OnDataItemDeleting">
         <Columns>
             <DxGridCommandColumn Width="120px" />
-            <DxGridDataColumn FieldName="ProductName"
-                          Caption="Name"
+            <DxGridDataColumn FieldName="ProductCode"
+                          Caption="Code"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="3" />
+            <DxGridDataColumn FieldName="ProductNameEn"
+                          Caption="Name(en)"
                           SortOrder="GridColumnSortOrder.Ascending"
                           SortIndex="0" />
+            <DxGridDataColumn FieldName="ProductNameFa"
+                          Caption="Name(fa)"
+                          SortOrder="GridColumnSortOrder.Ascending"
+                          SortIndex="2" />
             <DxGridDataColumn FieldName="CategoryName"
                           Caption="Category"
                           SortOrder="GridColumnSortOrder.Ascending"
@@ -47,8 +55,14 @@ else
                 var product = (northwind_blazor.Application.Products.Queries.GetProductsList.ProductDto)editFormContext.EditModel;
             }
             <DxFormLayout>
-                <DxFormLayoutItem Caption="Name">
-                    <DxTextBox @bind-Text="@product.ProductName" />
+                <DxFormLayoutItem Caption="Code">
+                    <DxTextBox @bind-Text="@product.ProductCode" />
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="Name(en)">
+                    <DxTextBox @bind-Text="@product.ProductNameEn" />
+                </DxFormLayoutItem>
+                <DxFormLayoutItem Caption="Name(fa)">
+                    <DxTextBox @bind-Text="@product.ProductNameFa" />
                 </DxFormLayoutItem>
                 @*<DxFormLayoutItem Caption="Category">
                     <DxTextBox @bind-Text="@product.CategoryName" />

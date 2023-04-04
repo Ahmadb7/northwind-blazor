@@ -14,7 +14,7 @@ namespace northwind_blazor.Application.Orders.Queries.GetOrderDetail
         public void Mapping(Profile profile)
         {
             profile.CreateMap<OrderDetail, OrderDetailVm>()
-                .ForMember(d => d.Product, opt => opt.MapFrom(s => s.Product.ProductName));
+                .ForMember(d => d.Product, opt => opt.MapFrom(s => s.Product.ProductNameEn));
         }
     }
 }

@@ -11,7 +11,9 @@ namespace northwind_blazor.Domain.Entities
         }
 
         public int ProductId { get; set; }
-        public string ProductName { get; set; }
+        public string ProductCode { get; set; }
+        public string ProductNameEn { get; set; }
+        public string ProductNameFa { get; set; }
         public int? SupplierId { get; set; }
         public int? CategoryId { get; set; }
         public string QuantityPerUnit { get; set; }

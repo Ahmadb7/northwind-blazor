@@ -40,7 +40,9 @@ namespace northwind_blazor.WebUI.Client.Pages.Product
             var dataItem = e.IsNew ? new ProductDto() : (ProductDto)e.DataItem;
 
             dataItem.ProductId = editModel.ProductId;
-            dataItem.ProductName = editModel.ProductName;
+            dataItem.ProductCode = editModel.ProductCode;
+            dataItem.ProductNameEn = editModel.ProductNameEn;
+            dataItem.ProductNameFa = editModel.ProductNameFa;
             dataItem.CategoryId = editModel.CategoryId;
             dataItem.CategoryName = editModel.CategoryName;
             dataItem.Discontinued = editModel.Discontinued;
@@ -55,7 +57,9 @@ namespace northwind_blazor.WebUI.Client.Pages.Product
                 var cmd = new CreateProductCommand();
                 cmd.CategoryId = editModel.CategoryId;
                 cmd.Discontinued = editModel.Discontinued;
-                cmd.ProductName = editModel.ProductName;
+                cmd.ProductCode = editModel.ProductCode;
+                cmd.ProductNameEn = editModel.ProductNameEn;
+                cmd.ProductNameFa = editModel.ProductNameFa;
                 cmd.SupplierId = editModel.SupplierId;
                 cmd.UnitPrice = editModel.UnitPrice;
 
@@ -67,7 +71,9 @@ namespace northwind_blazor.WebUI.Client.Pages.Product
                 cmd.CategoryId = editModel.CategoryId;
                 cmd.Discontinued = editModel.Discontinued;
                 cmd.ProductId = editModel.ProductId;
-                cmd.ProductName = editModel.ProductName;
+                cmd.ProductCode = editModel.ProductCode;
+                cmd.ProductNameEn = editModel.ProductNameEn;
+                cmd.ProductNameFa = editModel.ProductNameFa;
                 cmd.SupplierId = editModel.SupplierId;
                 cmd.UnitPrice = editModel.UnitPrice;
 

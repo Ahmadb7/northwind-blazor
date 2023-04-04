@@ -5,8 +5,12 @@ namespace northwind_blazor.Application.Products.Commands.UpdateProduct
     public class UpdateProductCommand : IRequest
     {
         public int ProductId { get; set; }
+        
+        public string ProductCode { get; set; }
 
-        public string ProductName { get; set; }
+        public string ProductNameEn { get; set; }
+        
+        public string ProductNameFa { get; set; }
 
         public decimal? UnitPrice { get; set; }
 

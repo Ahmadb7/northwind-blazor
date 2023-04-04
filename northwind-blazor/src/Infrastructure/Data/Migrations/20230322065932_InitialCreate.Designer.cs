@@ -264,9 +264,17 @@ namespace northwind_blazor.Persistence.Migrations
 
                     b.Property<bool>("Discontinued");
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("ProductCode")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
+                    b.Property<string>("ProductNameEn")
                         .IsRequired()
                         .HasMaxLength(40);
+
+                    b.Property<string>("ProductNameFa")
+                        .IsRequired()
+                        .HasMaxLength(60);
 
                     b.Property<string>("QuantityPerUnit")
                         .HasMaxLength(20);

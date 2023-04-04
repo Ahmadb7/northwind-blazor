@@ -8,7 +8,7 @@ namespace northwind_blazor.Application.Products.Queries.GetProductDetail
     {
         public int ProductId { get; set; }
 
-        public string ProductName { get; set; }
+        public string ProductNameEn { get; set; }
 
         public decimal? UnitPrice { get; set; }
 

@@ -17,7 +17,7 @@ namespace northwind_blazor.Application.Products.Queries.GetProductsFile
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Product, ProductRecordDto>()
-                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.ProductName))
+                .ForMember(d => d.Name, opt => opt.MapFrom(s => s.ProductNameEn))
                 .ForMember(d => d.Category, opt => opt.MapFrom(s => s.Category != null ? s.Category.CategoryName : string.Empty));
         }
     }

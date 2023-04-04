@@ -23,7 +23,7 @@ namespace northwind_blazor.Application.Products.Queries.GetProductsList
         {
             var products = await _context.Products
                 .ProjectTo<ProductDto>(_mapper.ConfigurationProvider)
-                .OrderBy(p => p.ProductName)
+                .OrderBy(p => p.ProductNameEn)
                 .ToListAsync(cancellationToken);
 
             var vm = new ProductsListVm
