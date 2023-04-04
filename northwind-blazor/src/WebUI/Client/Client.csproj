@@ -26,4 +26,15 @@
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\DevExpress.Blazor.Themes\" />
+    <Folder Include="wwwroot\css\DevExpress.Blazor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\css\DevExpress.Blazor.Themes\blazing-berry.bs5.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

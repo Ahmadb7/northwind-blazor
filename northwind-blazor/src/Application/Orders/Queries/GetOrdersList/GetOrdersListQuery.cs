@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using northwind_blazor.Application.Common.Interfaces;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace northwind_blazor.Application.Orders.Queries.GetOrdersList
+﻿namespace northwind_blazor.Application.Orders.Queries.GetOrdersList
 {
     public class GetOrdersListQuery : IRequest<OrdersListVm>
     {
@@ -26,14 +17,14 @@ namespace northwind_blazor.Application.Orders.Queries.GetOrdersList
             {
                 var Orders = await _context.Orders
                     .ProjectTo<OrderLookupDto>(_mapper.ConfigurationProvider)
-                    .OrderBy(e => e.Name)
+                    .OrderByDescending(e => e.OrderDate)
                     .ToListAsync(cancellationToken);
 
                 var vm = new OrdersListVm
                 {
                     Orders = Orders
                 };
-                 
+
                 return vm;
             }
         }

@@ -13,6 +13,7 @@
         Counter = 64,
         Forecast = 128,
         Todo = 256,
+        Northwind = 512,
         All = ~None
     }
 }

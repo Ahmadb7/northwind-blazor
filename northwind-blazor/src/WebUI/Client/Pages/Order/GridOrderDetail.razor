@@ -1,0 +1,39 @@
+﻿@using northwind_blazor.Application.Orders.Queries.GetOrderDetail;
+@using northwind_blazor.Application.Orders.Queries.GetOrdersList;
+
+@attribute [Authorize]
+@inject HttpClient Http
+
+<h3>Component</h3>
+
+<div class="mb-2">
+    Order detail
+</div>
+
+<DxGrid Data="DetailGridData"
+    PageSize="5"
+    AutoExpandAllGroupRows="true">
+    <Columns>
+        <DxGridDataColumn FieldName="Product" />
+        <DxGridDataColumn FieldName="UnitPrice" DisplayFormat="C" />
+        <DxGridDataColumn FieldName="Quantity" />
+        <DxGridDataColumn FieldName="Discount" />
+    </Columns>
+</DxGrid>
+
+@code {
+    [Parameter]
+    public OrderLookupDto Order { get; set; }
+    object DetailGridData { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Order != null)
+        {
+            var orderDetail = await Http.GetFromJsonAsync<List<OrderDetailVm>>($"api/Orders/{Order.OrderId}");
+
+            DetailGridData = orderDetail;
+        }
+    }
+
+}

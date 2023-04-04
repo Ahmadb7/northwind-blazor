@@ -1,50 +1,77 @@
-﻿@page "/customerlist"
+﻿@page "/orderlist"
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using northwind_blazor.Application.Orders.Queries.GetOrdersList;
 @attribute [Authorize]
 @inject HttpClient Http
 
-<PageTitle>Customers</PageTitle>
+<PageTitle>Orders</PageTitle>
 
-<h1>Customers</h1>
+<h1>Orders</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (Model == null || Model.Customers == null)
+@if (Model == null || Model.Orders == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <DxGrid Data="@Model.Customers"
+    <DxGrid @ref="grid"
+        Data="@Model.Orders"
         ShowFilterRow="true"
+        AutoCollapseDetailRow="AutoCollapseDetailRow"
         EditMode="GridEditMode.EditForm"
         EditModelSaving="OnEditModelSaving"
         DataItemDeleting="OnDataItemDeleting">
         <Columns>
             <DxGridCommandColumn Width="120px" />
-            <DxGridDataColumn FieldName="Id"
-                          Caption="Id"
+            <DxGridDataColumn FieldName="OrderDate"
+                          Caption="Order Date"
+                          SortOrder="GridColumnSortOrder.Descending"
+                          SortIndex="0" />
+            <DxGridDataColumn FieldName="Customer"
+                          Caption="Customer"
                           SortOrder="GridColumnSortOrder.Ascending"
                           SortIndex="1" />
-            <DxGridDataColumn FieldName="Name"
-                          Caption="Name"
+            <DxGridDataColumn FieldName="Employee"
+                          Caption="Employee"
                           SortOrder="GridColumnSortOrder.Ascending"
-                          SortIndex="0" />
+                          SortIndex="2" />
+            <DxGridDataColumn FieldName="RequiredDate" 
+                          Caption="Required Date" />
+            <DxGridDataColumn FieldName="Freight"
+                          Caption="Freight" />
+            <DxGridDataColumn FieldName="ShipAddress"
+                          Caption="Ship Address" />
+            <DxGridDataColumn FieldName="ShipCity"
+                          Caption="Ship City" />
+            @*<DxGridDataColumn FieldName="ShipCountry"
+                          Caption="Ship Country" />*@
+            <DxGridDataColumn FieldName="ShipName"
+                          Caption="Ship Name" />
+            @*<DxGridDataColumn FieldName="ShippedDate"
+                          Caption="Shipped Date" />
+            <DxGridDataColumn FieldName="ShipPostalCode"
+                          Caption="Ship PostalCode" />
+            <DxGridDataColumn FieldName="ShipRegion"
+                          Caption="Ship Region" />
+            <DxGridDataColumn FieldName="ShipVia"
+                          Caption="Ship Via" />*@
         </Columns>
+        <DetailRowTemplate>
+            <GridOrderDetail Order="(OrderLookupDto)context.DataItem" />
+        </DetailRowTemplate>
         <TotalSummary>
-            <DxGridSummaryItem FooterColumnName="Name"
+            <DxGridSummaryItem FooterColumnName="OrderDate"
                            SummaryType=GridSummaryItemType.Count />
         </TotalSummary>
         <EditFormTemplate Context="editFormContext">
             @{
-                var customer = (northwind_blazor.Application.Customers.Queries.GetCustomersList.CustomerLookupDto)editFormContext.EditModel;
+                var _order = (northwind_blazor.Application.Orders.Queries.GetOrdersList.OrderLookupDto)editFormContext.EditModel;
             }
             <DxFormLayout>
-                @*<DxFormLayoutItem Caption="Id">
-                    <DxTextBox @bind-Text="@customer.Id" />
-                </DxFormLayoutItem>*@
-                <DxFormLayoutItem Caption="Name">
-                    <DxTextBox @bind-Text="@customer.Name" />
+                <DxFormLayoutItem Caption="Order Date">
+                    <DxDateEdit @bind-Date="@_order.OrderDate" />
                 </DxFormLayoutItem>
             </DxFormLayout>
         </EditFormTemplate>

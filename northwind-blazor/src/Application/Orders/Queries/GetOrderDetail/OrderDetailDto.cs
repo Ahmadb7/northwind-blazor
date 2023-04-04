@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using northwind_blazor.Application.Common.Mappings;
-using northwind_blazor.Domain.Entities;
+﻿using northwind_blazor.Application.Common.Mappings;
 
 namespace northwind_blazor.Application.Orders.Queries.GetOrderDetail
 {

@@ -31,14 +31,12 @@ namespace northwind_blazor.Application.Orders.Commands.DeleteOrder
                     throw new Common.Exceptions.NotFoundException(nameof(Order), request.Id);
                 }
 
-                if (entity.UserId == _currentUser.UserId)
-                {
-                    throw new BadRequestException("Orders cannot delete their own account.");
-                }
 
-                if (entity.UserId != null)
+                var hasOrders = _context.OrderDetails.Any(od => od.OrderId == entity.OrderId);
+                if (hasOrders)
                 {
-                    await _identityService.DeleteUserAsync(entity.UserId);
+                    // TODO: Add functional test for this behaviour.
+                    throw new DeleteFailureException(nameof(Order), request.Id, "There are existing orders associated with this order.");
                 }
 
                 // TODO: Update this logic, this will only work if the Order has no associated territories or orders.Emp

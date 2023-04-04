@@ -1,12 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using northwind_blazor.Application.Employees.Commands.DeleteEmployee;
-using northwind_blazor.Application.Employees.Commands.UpsertEmployee;
-using northwind_blazor.Application.Employees.Queries.GetEmployeeDetail;
-using northwind_blazor.Application.Employees.Queries.GetEmployeesList;
+﻿using Microsoft.AspNetCore.Mvc;
+using northwind_blazor.Application.Orders.Commands.DeleteOrder;
+using northwind_blazor.Application.Orders.Commands.UpsertOrder;
+using northwind_blazor.Application.Orders.Queries.GetOrderDetail;
+using northwind_blazor.Application.Orders.Queries.GetOrdersList;
 using northwind_blazor.WebUI.Server.Controllers;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace northwind_blazor.WebUI.Controllers
 {
@@ -14,23 +11,22 @@ namespace northwind_blazor.WebUI.Controllers
     {
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<IList<EmployeeLookupDto>>> GetAll()
+        public async Task<ActionResult<IList<OrderLookupDto>>> GetAll()
         {
-            return Ok(await Mediator.Send(new GetEmployeesListQuery()));
+            return Ok(await Mediator.Send(new GetOrdersListQuery()));
         }
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<EmployeeDetailVm>> Get(int id)
+        public async Task<ActionResult<List<OrderDetailVm>>> Get(int id)
         {
-            return Ok(await Mediator.Send(new GetEmployeeDetailQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetOrderDetailQuery { Id = id }));
         }
-
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> Upsert(UpsertEmployeeCommand command)
+        public async Task<IActionResult> Upsert(UpsertOrderCommand command)
         {
             var id = await Mediator.Send(command);
 
@@ -42,7 +38,7 @@ namespace northwind_blazor.WebUI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Delete(int id)
         {
-            await Mediator.Send(new DeleteEmployeeCommand { Id = id });
+            await Mediator.Send(new DeleteOrderCommand { Id = id });
 
             return NoContent();
         }
