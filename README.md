@@ -8,4 +8,4 @@ Test project for implementing domain driven design include:
  - Audit Trail
  - Blazor
  - DevExpress
- 
+ - Serilog
